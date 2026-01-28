@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#0b0b10" />
   <title>Mrs. Buckingham — Be My Valentine?</title>
 
-  <!-- Optional: pretty fonts (works best when opened via a link/hosted) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -40,7 +39,7 @@
       overflow-x:hidden;
     }
 
-    /* subtle gothic “lace” */
+    /* subtle gothic lace pattern */
     .lace {
       position:fixed; inset:-60px;
       pointer-events:none;
@@ -63,7 +62,7 @@
     }
 
     .card{
-      width:min(940px, 100%);
+      width:min(700px, 100%);
       background: linear-gradient(180deg, rgba(18,18,27,.92), rgba(12,12,18,.90));
       border: 1px solid rgba(255,77,166,.18);
       border-radius: var(--radius);
@@ -78,6 +77,7 @@
       justify-content:space-between;
       gap:12px;
       padding: 18px 18px 0;
+      flex-wrap: wrap;
     }
 
     .badge{
@@ -104,52 +104,65 @@
     }
 
     .content{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 18px;
-      padding: 16px 18px 18px;
+      padding: 24px 28px 18px;
     }
 
-    @media (max-width: 860px){
-      .content{ grid-template-columns: 1fr; }
-      .topbar{ padding-top: 16px; }
-    }
-
-    .left{
-      padding: 14px 14px 10px;
+    @media (max-width: 600px){
+      .content{ padding: 20px 18px 16px; }
+      .topbar{ padding-top: 14px; }
     }
 
     h1{
       font-family: Cinzel, Georgia, "Times New Roman", serif;
-      margin: 10px 0 10px;
-      font-size: clamp(34px, 4.2vw, 58px);
-      line-height:1.05;
+      margin: 14px 0 14px;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height:1.1;
       letter-spacing:.02em;
+      text-align: center;
     }
+
     .sub{
-      margin: 0 0 16px;
+      margin: 0 0 20px;
       color: var(--muted);
       font-size: 15px;
-      line-height:1.55;
-      max-width: 62ch;
+      line-height:1.6;
+      text-align: center;
+    }
+
+    .sub strong {
+      color: var(--soft);
     }
 
     .quote{
-      margin: 16px 0 18px;
-      padding: 14px 14px 14px 16px;
+      margin: 20px 0 24px;
+      padding: 18px 20px;
       border-left: 3px solid rgba(255,77,166,.75);
       background: rgba(255,77,166,.07);
       border-radius: 14px;
       color: #f6f0f4;
     }
-    .quote p{ margin: 8px 0; }
+    .quote p{
+      margin: 10px 0;
+      line-height: 1.5;
+    }
     .quote strong{ color: var(--soft); }
+
+    .ask{
+      text-align: center;
+      margin: 24px 0 20px;
+      font-size: 17px;
+      color: var(--text);
+    }
+    .ask strong{
+      color: var(--pink);
+    }
 
     .buttons{
       display:flex;
       flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 16px;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
     }
 
     .btn{
@@ -157,9 +170,10 @@
       border: 1px solid rgba(255,77,166,.28);
       background: rgba(255,77,166,.10);
       color: var(--text);
-      padding: 12px 14px;
+      padding: 14px 20px;
       border-radius: 14px;
       font-weight: 600;
+      font-size: 15px;
       letter-spacing:.02em;
       cursor:pointer;
       transition: transform .12s ease, background .18s ease, border-color .18s ease;
@@ -173,72 +187,20 @@
       color: #120914;
       box-shadow: 0 10px 30px rgba(255,77,166,.22);
     }
-    .btn.primary:hover{ filter: brightness(1.02); }
+    .btn.primary:hover{ filter: brightness(1.05); }
     .btn:hover{ background: rgba(255,77,166,.14); border-color: rgba(255,77,166,.42); }
     .btn:focus{ outline:none; box-shadow: var(--ring); }
 
-    .right{
-      padding: 14px 14px 16px;
-    }
-
-    .gallery{
-      background: linear-gradient(180deg, rgba(15,15,23,.92), rgba(10,10,16,.92));
-      border: 1px solid rgba(255,77,166,.16);
-      border-radius: var(--radius);
-      padding: 12px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .frame{
-      border-radius: 16px;
-      overflow:hidden;
-      aspect-ratio: 4 / 5;
-      position:relative;
-      background: rgba(0,0,0,.35);
-    }
-
-    .slide{
-      position:absolute; inset:0;
-      opacity:0;
-      transform: scale(1.03);
-      transition: opacity .6s ease, transform .9s ease;
-      background-size: cover;
-      background-position: center;
-      filter: contrast(1.02) saturate(1.05);
-    }
-    .slide.active{
-      opacity:1;
-      transform: scale(1.0);
-    }
-
-    .gallery .caption{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .dots{ display:flex; gap:7px; align-items:center; }
-    .dot{
-      width: 8px; height: 8px; border-radius: 99px;
-      background: rgba(255,77,166,.25);
-      border: 1px solid rgba(255,77,166,.25);
-      cursor:pointer;
-    }
-    .dot.active{ background: var(--pink); box-shadow: 0 0 14px rgba(255,77,166,.5); }
-
     .footer{
-      padding: 0 18px 18px;
+      padding: 16px 24px 20px;
       color: rgba(201,201,212,.85);
-      font-size: 12px;
+      font-size: 13px;
       display:flex;
       justify-content:space-between;
       gap:10px;
       flex-wrap:wrap;
+      border-top: 1px solid rgba(255,77,166,.08);
+      margin-top: 8px;
     }
 
     .sig{
@@ -247,50 +209,59 @@
       color: rgba(255,209,232,.95);
     }
 
+    /* decorative hearts */
+    .heart-decoration {
+      text-align: center;
+      font-size: 28px;
+      margin: 8px 0 16px;
+      opacity: 0.8;
+    }
+
     /* modal */
     .modal{
       position:fixed; inset:0;
       display:none;
       place-items:center;
-      background: rgba(5,5,8,.72);
-      backdrop-filter: blur(6px);
+      background: rgba(5,5,8,.78);
+      backdrop-filter: blur(8px);
       padding: 18px;
       z-index: 50;
     }
     .modal.show{ display:grid; }
     .modalCard{
-      width:min(640px, 100%);
+      width:min(560px, 100%);
       background: linear-gradient(180deg, rgba(18,18,27,.98), rgba(10,10,16,.96));
       border: 1px solid rgba(255,77,166,.24);
       border-radius: 22px;
       box-shadow: var(--shadow);
-      padding: 18px 18px 16px;
+      padding: 24px 24px 20px;
       text-align:center;
       position:relative;
       overflow:hidden;
     }
     .modalCard h2{
-      margin: 6px 0 8px;
+      margin: 8px 0 12px;
       font-family: Cinzel, Georgia, serif;
-      font-size: clamp(26px, 4vw, 38px);
+      font-size: clamp(26px, 4.5vw, 40px);
     }
     .modalCard p{
-      margin: 0 auto 14px;
+      margin: 0 auto 16px;
       color: var(--muted);
-      line-height:1.55;
-      max-width: 56ch;
+      line-height:1.6;
+      max-width: 48ch;
     }
     .plan{
-      margin: 12px auto 16px;
-      padding: 12px 14px;
+      margin: 16px auto 20px;
+      padding: 16px 18px;
       border-radius: 16px;
       background: rgba(255,77,166,.08);
       border: 1px solid rgba(255,77,166,.18);
       color: #f6f0f4;
-      max-width: 56ch;
+      max-width: 48ch;
       text-align:left;
     }
     .plan strong{ color: var(--soft); }
+    .plan div { margin: 6px 0; }
 
     /* hearts confetti canvas */
     #confetti{
@@ -300,7 +271,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .slide, .btn{ transition:none !important; }
+      .btn{ transition:none !important; }
     }
   </style>
 </head>
@@ -312,54 +283,33 @@
   <main class="wrap">
     <section class="card" role="region" aria-label="Valentine page">
       <div class="topbar">
-        <div class="badge"><span class="dot"></span> Romantic • Gothic-cute</div>
+        <div class="badge"><span class="dot"></span></div>
         <div class="badge">For: <span style="letter-spacing:.02em;text-transform:none;color:var(--soft);margin-left:4px;">Mrs. Buckingham</span></div>
       </div>
 
       <div class="content">
-        <div class="left">
-          <h1>Mrs. Buckingham,<br>will you be my Valentine?</h1>
+        <div class="heart-decoration">🖤 💗 🖤</div>
 
-          <p class="sub">
-            From <strong>Mr. Buckingham</strong> — the guy who still gets lucky enough to call you mine.
-            I wanted something simple, a little dark-cute, and very us.
-          </p>
+        <h1>Mrs. Buckingham,<br>will you be my Valentine?</h1>
 
-          <div class="quote">
-            <p>❤️ <strong>I love how you’re there for me through everything.</strong></p>
-            <p>❤️ <strong>I love that you’re an amazing mom to our children.</strong></p>
-            <p>❤️ <strong>I love that you’re always honest and real.</strong></p>
-          </div>
+        <p class="sub">
+          From <strong>Mr. Buckingham</strong> — the one who still can't believe he gets to call you his.
+        </p>
 
-          <p class="sub">
-            So… one more time, and always:
-            <strong>be my Valentine?</strong>
-          </p>
-
-          <div class="buttons">
-            <button class="btn primary" id="yesBtn">Yes 💗</button>
-            <button class="btn" id="alsoYesBtn">Absolutely yes 🖤</button>
-          </div>
+        <div class="quote">
+          <p>🖤 <strong>I love how you're there for me through everything</strong> — you're my safe place and my best teammate, no matter what life throws at us.</p>
+          <p>💗 <strong>I love that you're an amazing mom to our children</strong> — patient, fierce, and somehow making chaos feel like home.</p>
+          <p>🖤 <strong>I love that you're always honest and real</strong> — no pretending, just you. That's one of the reasons I trust you with my whole life.</p>
         </div>
 
-        <div class="right">
-          <div class="gallery" aria-label="Photo gallery">
-            <div class="frame">
-              <!-- IMPORTANT: put these image files in the same folder as this HTML -->
-              <div class="slide active" style="background-image:url('photo1.jpg')" aria-hidden="true"></div>
-              <div class="slide" style="background-image:url('photo2.jpg')" aria-hidden="true"></div>
-              <div class="slide" style="background-image:url('photo3.jpg')" aria-hidden="true"></div>
-            </div>
+        <p class="ask">
+          So... one more time, and always:<br>
+          <strong>Be my Valentine?</strong>
+        </p>
 
-            <div class="caption">
-              <span id="capText">Our favorites ✨</span>
-              <div class="dots" aria-label="Slideshow dots">
-                <div class="dot active" data-i="0" role="button" tabindex="0" aria-label="Photo 1"></div>
-                <div class="dot" data-i="1" role="button" tabindex="0" aria-label="Photo 2"></div>
-                <div class="dot" data-i="2" role="button" tabindex="0" aria-label="Photo 3"></div>
-              </div>
-            </div>
-          </div>
+        <div class="buttons">
+          <button class="btn primary" id="yesBtn">Yes 💗</button>
+          <button class="btn" id="alsoYesBtn">Absolutely Yes 🖤</button>
         </div>
       </div>
 
@@ -370,19 +320,19 @@
     </section>
   </main>
 
-  <!-- “YES” modal -->
+  <!-- "YES" modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Valentine accepted">
     <div class="modalCard">
-      <h2>Yay. It’s a date. 💗</h2>
+      <h2>Yay! It's a date. 💗</h2>
       <p>
-        You’re my favorite person — and I’m still choosing you, every single day.
+        You're my favorite person — and I'm still choosing you, every single day.
       </p>
 
       <div class="plan">
-        <div><strong>Tonight’s plan:</strong></div>
-        <div>• Quiet night at home</div>
-        <div>• I’ll cook dinner</div>
-        <div>• Cuddle up together (no distractions)</div>
+        <div><strong>The nights plan:</strong></div>
+        <div>🖤 A quiet night at home, just us</div>
+        <div>💗 I'll cook dinner for you</div>
+        <div>🖤 Then we cuddle up together</div>
       </div>
 
       <button class="btn primary" id="closeBtn">Okay, Valentine 🖤</button>
@@ -390,35 +340,6 @@
   </div>
 
   <script>
-    // ---------- Slideshow ----------
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const dots = Array.from(document.querySelectorAll('.dot'));
-    const capText = document.getElementById('capText');
-    const captions = ["Our favorites ✨", "Us being cute 😌", "My forever date 🖤"];
-
-    let idx = 0;
-    function show(i){
-      idx = i;
-      slides.forEach((s, n) => s.classList.toggle('active', n === i));
-      dots.forEach((d, n) => d.classList.toggle('active', n === i));
-      capText.textContent = captions[i] || "Our favorites ✨";
-    }
-
-    let timer = setInterval(() => show((idx + 1) % slides.length), 4500);
-
-    function dotClick(i){
-      clearInterval(timer);
-      show(i);
-      timer = setInterval(() => show((idx + 1) % slides.length), 4500);
-    }
-
-    dots.forEach(d => {
-      d.addEventListener('click', () => dotClick(Number(d.dataset.i)));
-      d.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter' || e.key === ' ') dotClick(Number(d.dataset.i));
-      });
-    });
-
     // ---------- Modal + Confetti ----------
     const modal = document.getElementById('modal');
     const yesBtn = document.getElementById('yesBtn');
@@ -475,14 +396,14 @@
         particles.push({
           x: rand(0, window.innerWidth),
           y: rand(window.innerHeight * 0.2, window.innerHeight),
-          vy: rand(-4.8, -2.2),
-          vx: rand(-1.2, 1.2),
+          vy: rand(-5.5, -2.5),
+          vx: rand(-1.5, 1.5),
           rot: rand(0, Math.PI*2),
-          vr: rand(-0.06, 0.06),
-          size: rand(10, 18),
-          alpha: rand(0.65, 1),
-          life: rand(70, 120),
-          color: Math.random() < 0.55 ? "#ff4da6" : "#ffd1e8"
+          vr: rand(-0.07, 0.07),
+          size: rand(12, 22),
+          alpha: rand(0.7, 1),
+          life: rand(80, 140),
+          color: Math.random() < 0.5 ? "#ff4da6" : (Math.random() < 0.5 ? "#ffd1e8" : "#1a1a1a")
         });
       }
     }
@@ -494,9 +415,9 @@
         p.x += p.vx;
         p.y += p.vy;
         p.rot += p.vr;
-        p.vy += 0.04; // gravity
+        p.vy += 0.045; // gravity
         p.life -= 1;
-        p.alpha *= 0.992;
+        p.alpha *= 0.993;
 
         ctx.save();
         ctx.translate(p.x, p.y);
@@ -512,11 +433,9 @@
 
       const now = Date.now();
       if(now < endAt){
-        // keep feeding a little
-        if(Math.random() < 0.65) spawnHearts(6);
+        if(Math.random() < 0.7) spawnHearts(8);
         animId = requestAnimationFrame(tick);
       } else {
-        // fade out cleanly
         if(particles.length > 0){
           animId = requestAnimationFrame(tick);
         } else {
@@ -528,16 +447,10 @@
     }
 
     function startHeartConfetti(){
-      endAt = Date.now() + 2200;
-      spawnHearts(60);
+      endAt = Date.now() + 2800;
+      spawnHearts(80);
       if(!animId) tick();
     }
   </script>
 </body>
 </html>
-<!-- Replace ONLY the <div class="quote"> ... </div> section with this: -->
-<div class="quote">
-  <p>🖤 <strong>I love how you stay steady when life gets heavy</strong> — you’re my safe place and my best teammate.</p>
-  <p>💗 <strong>I’m obsessed with the way you love our kids</strong> — you’re patient, fierce, and somehow make chaos feel like home.</p>
-  <p>🕯️ <strong>I love that you’re real with me</strong> — honest, genuine, and never pretending. That’s one of the reasons I trust you with my whole life.</p>
-</div>
